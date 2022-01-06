@@ -73,3 +73,107 @@ Example response
 php artisan expired-subscriptions
 
 - This command provides to make renewed subscription if it is expired.
+
+
+# REPORTS
+- Records Count Today
+```sql
+SELECT COUNT(*) 
+FROM subscriptions
+WHERE date(created_at) = current_date;
+```
+
+- All Android Records Count Today
+```sql
+SELECT COUNT(*)
+FROM subscriptions s
+INNER JOIN devices d ON d.id = s.device_id AND d.os = 'Android'
+WHERE date(s.created_at) = current_date;
+```
+
+- All Ios Records Count Today
+```sql
+SELECT COUNT(*)
+FROM subscriptions s
+INNER JOIN devices d ON d.id = s.device_id AND d.os = 'Ios'
+WHERE date(s.created_at) = current_date;
+```
+
+- All Started Records Today
+```sql
+SELECT COUNT(*)
+FROM subscriptions s
+WHERE s.status = 'Started'
+WHERE date(s.created_at) = current_date;
+```
+
+- All Renewed Records Today
+```sql
+SELECT COUNT(*)
+FROM subscriptions s
+WHERE s.status = 'Renewed'
+WHERE date(s.created_at) = current_date;
+```
+
+- All Cancelled Records Today
+```sql
+SELECT COUNT(*)
+FROM subscriptions s
+WHERE s.status = 'Cancelled'
+WHERE date(s.created_at) = current_date;
+```
+
+- All Android Started Records Today
+```sql
+SELECT COUNT(*)
+FROM subscriptions s
+INNER JOIN devices d ON d.id = s.device_id AND d.os = 'Android'
+WHERE s.status = 'Started'
+WHERE date(s.created_at) = current_date;
+```
+
+- All Android Renewed Records Today
+```sql
+SELECT COUNT(*)
+FROM subscriptions s
+INNER JOIN devices d ON d.id = s.device_id AND d.os = 'Android'
+WHERE s.status = 'Renewed'
+WHERE date(s.created_at) = current_date;
+```
+
+- All Android Cancelled Records Today
+```sql
+SELECT COUNT(*)
+FROM subscriptions s
+INNER JOIN devices d ON d.id = s.device_id AND d.os = 'Android'
+WHERE s.status = 'Cancelled'
+WHERE date(s.created_at) = current_date;
+```
+
+- All Ios Started Records Today
+```sql
+SELECT COUNT(*)
+FROM subscriptions s
+INNER JOIN devices d ON d.id = s.device_id AND d.os = 'Ios'
+WHERE s.status = 'Started'
+WHERE date(s.created_at) = current_date;
+```
+
+- All Ios Renewed Records Today
+```sql
+SELECT COUNT(*)
+FROM subscriptions s
+INNER JOIN devices d ON d.id = s.device_id AND d.os = 'Ios'
+WHERE s.status = 'Renewed'
+WHERE date(s.created_at) = current_date;
+```
+
+- All Ios Cancelled Records Todayy
+```sql
+SELECT COUNT(*)
+FROM subscriptions s
+INNER JOIN devices d ON d.id = s.device_id AND d.os = 'Ios'
+WHERE s.status = 'Cancelled'
+WHERE date(s.created_at) = current_date;
+```
+
